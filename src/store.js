@@ -1,7 +1,7 @@
 import { createStore } from 'redux'
 
 const initState = {
-    jugadores: [],
+    player: [],
     titulares: [],
     suplentes: []
 }
