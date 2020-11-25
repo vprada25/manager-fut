@@ -1,20 +1,21 @@
 
-import './App.css';
 import { Provider } from "react-redux";
 import store from "./store";
+import Jugadores from "./components/players"
 
 
 const App = () => {
-
-  <Provider store={store}>
-    <main>
-      <h1>
-        Colombia Fc
+  return (
+    <Provider store={store}>
+      <main>
+        <h1>
+          Colombia Fc
     </h1>
-      <Jugadores />
-      <EquipoSeleccionado />
-    </main>
-  </Provider>
+        <Jugadores />
+      </main>
+    </Provider>
+  );
+
 
 }
 
