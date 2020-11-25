@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-const player = ({ player }) => {
+const player = ({ player, addHeadline , addAlternate }) => {
     return (
         <section>
             <h2>
@@ -12,13 +12,13 @@ const player = ({ player }) => {
                 {
                     player.map(j => (
                         <article className="player">
-                            <img src={j.foto} alt={j.nombre}></img>
-                            <h3>{j.nombre}</h3>
+                            <img src={j.photo} alt={j.name}></img>
+                            <h3>{j.name}</h3>
                             <div>
-                                <button>
+                                <button onClick={()=> addHeadline(j)}>
                                     Titular
                             </button>
-                                <button>
+                                <button  onClick={()=> addAlternate(j)}>
                                     Suplente
                             </button>
                             </div>
@@ -28,8 +28,6 @@ const player = ({ player }) => {
             </div>
         </section>
     );
-
-
 }
 
 const mapStateToProps = state => ({
@@ -37,7 +35,18 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-
+    addHeadline(j){
+        dispatch({
+            type: "AGREGAR_TITULAR",
+            j
+        })
+    },
+    addAlternate(j){
+        dispatch({
+            type: "AGREGAR_SUPLENTE",
+            j
+        })
+    }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(player);
