@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import cancha from '../assets/cancha.svg'
 
 const headline = ({headline , deleteHeadline}) => {
     return (
@@ -17,6 +18,7 @@ const headline = ({headline , deleteHeadline}) => {
                         </article>
                     ))
                 }
+                <img src={cancha} alt="canchita"></img>
             </div>
         </section>
     )
