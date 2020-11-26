@@ -38,11 +38,29 @@ const reducer = (state = initState, action) => {
             player: state.player.filter(j=> j.id!== action.j.id)
         }
     }
+
     if (action.type === "AGREGAR_SUPLENTE") {
         return {
             ...state,
             alternate: state.alternate.concat(action.j),
             player: state.player.filter(j=> j.id!== action.j.id)
+        }
+    }
+
+    if (action.type === "BORRAR_TITULAR") {
+        return {
+            ...state,
+            headline: state.headline.filter(j=> j.id!== action.j.id),
+            player: state.player.concat(action.j)
+        }
+    }
+   
+    
+    if (action.type === "BORRAR_SUPLENTE") {
+        return {
+            ...state,
+            alternate: state.alternate.filter(j=> j.id!== action.j.id),
+            player: state.player.concat(action.j)
         }
     }
     return state

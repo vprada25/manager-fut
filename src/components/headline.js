@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-const headline = ({headline}) => {
+const headline = ({headline , deleteHeadline}) => {
     return (
         <section>
             <h2>Titulares</h2>
@@ -11,7 +11,7 @@ const headline = ({headline}) => {
                         <article className="headline">
                             <div className="">
                                 <img src={j.photo} alt={j.name}></img>
-                                <button>x</button>
+                                <button onClick={()=> deleteHeadline(j)}>x</button>
                             </div>
                             <p>{j.name}</p>
                         </article>
@@ -26,7 +26,14 @@ const mapStateToProps = state => ({
     headline: state.headline
 })
 
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({
+    deleteHeadline(j){
+        dispatch({
+            type: "BORRAR_TITULAR",
+            j
+        })
+    }
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(headline);
 

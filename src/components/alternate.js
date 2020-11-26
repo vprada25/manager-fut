@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-const alternate = ({alternate}) => {
+const alternate = ({alternate, deleteAlternate}) => {
     return (
         <section>
             <h2>Suplentes</h2>
@@ -11,7 +11,7 @@ const alternate = ({alternate}) => {
                         <article className="alternate">
                             <div className="">
                                 <img src={j.photo} alt={j.name}></img>
-                                <button>x</button>
+                                <button onClick={()=> deleteAlternate(j)}>x</button>
                             </div>
                             <p>{j.name}</p>
                         </article>
@@ -26,6 +26,13 @@ const mapStateToProps = state => ({
     alternate: state.alternate
 })
 
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({
+    deleteAlternate(j){
+        dispatch({
+            type: "BORRAR_SUPLENTE",
+            j
+        })
+    }
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(alternate);
